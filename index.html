@@ -12,6 +12,7 @@
 .nav a.completed{background:#eee9ff;border-color:#c8b8f2;color:#5534c4;opacity:1;font-weight:900}
 .mbtiExplorer{margin:4px 0 15px;padding:17px 19px;border:1px solid #d9d0f8;border-radius:17px;background:#f5f1ff}.mbtiExplorer h3,.jobCatalogTools h3{margin:0 0 9px;font-size:clamp(19px,2.5vw,23px);color:#443186}.mbtiExplorer p{margin:0;line-height:1.7;color:#514c69;word-break:keep-all}.jobCatalogTools{margin:4px 0 14px}.jobCatalogTools[hidden],.mbtiExplorer[hidden],.jobViewAction[hidden]{display:none}.jobViewAction{margin:14px 0}.jobViewAction .btn,.jobCatalogTools>.btn{min-height:48px}
 .selectedChip{min-height:44px;color:#234a42;cursor:pointer}.selectedChip span{margin-left:5px;font-weight:900}
+.gameSettings{display:grid;gap:3px;margin:0 0 17px;padding:13px 16px;border:1px solid #d9d0f8;border-radius:14px;background:#f7f4ff;color:#4b416d;font-size:14px;word-break:keep-all}.gameSettings b{color:#443186;font-size:15px}.gameSettings span{overflow-wrap:break-word}
 .finalBlock{padding:20px 0;border-top:1px solid var(--line)}.finalBlock h3{margin:0 0 13px;font-size:clamp(19px,2.5vw,23px)}.finalBlock .field{margin:12px 0}.reportPaste{min-height:135px}.reportSummary{margin:13px 0;padding:16px 18px;border:1px solid #a4e7cf;border-radius:16px;background:#edfff7;color:#145747;line-height:1.7}.reportSummary b{font-weight:900}.reportSummary div+div{margin-top:4px}.speechBox{min-height:160px;background:#172033;color:#fff;border-color:#172033;line-height:1.65}.finalBlock .row{margin-top:10px}#reportLoadStatus{font-weight:700}
 #s10 .btn.complete{background:var(--violet);color:#fff}
 .finalStatus{margin-right:auto;align-self:center;color:#087b67;font-weight:900}.btn.complete:disabled{opacity:.65;cursor:default}
@@ -35,13 +36,13 @@ body{word-break:keep-all;overflow-wrap:break-word}.hero h1{font-size:clamp(30px,
 
 <section class="section" id="s3"><div class="head"><div class="num">STEP 3</div><div><h2>내 게임 스타일 정하기</h2><p>게임 이름, 세계관, 승리 조건과 특별 규칙을 정해요.</p><span class="time">⏱ 6분</span></div></div><div class="field"><label for="gameTitle">게임 이름</label><input id="gameTitle" type="text" maxlength="50" placeholder="예: 미래 직업 원정대"></div><div class="label" style="margin-top:15px">게임 세계관</div><div id="themes" class="themes" style="margin-top:8px"></div><div class="field" style="margin-top:12px"><label for="customTheme">직접 만든 세계관</label><input id="customTheme" type="text" maxlength="50" placeholder="예: 고양이 왕국, 바닷속 도시"></div><div class="two" style="margin-top:14px"><div class="field"><label for="goal">승리 조건</label><select id="goal"><option>직업 카드 3장을 먼저 모으면 승리</option><option>진로 경험 점수 10점을 먼저 얻으면 승리</option><option>서로 다른 직업 4개를 만나 출발점으로 돌아오면 승리</option><option>두 명이 협력해 총 15점을 얻으면 함께 승리</option></select></div><div class="field"><label for="special">특별 칸</label><select id="special"><option>아이디어 카드: 해결 아이디어를 말하면 2점</option><option>순간이동: 2칸 앞으로 이동</option><option>협력 미션: 함께 성공하면 둘 다 2점</option><option>직업 교환소: 직업 카드 1장을 바꾸기</option></select></div></div><div class="field" style="margin-top:13px"><label for="ownRule">내가 추가할 규칙</label><input id="ownRule" type="text" maxlength="120" placeholder="예: 진로 질문에 답하면 주사위를 한 번 더 굴린다"></div><div class="label" style="margin-top:17px">24칸 사각형 게임판 미리보기</div><small class="boardHint">태블릿에서는 게임판을 좌우로 밀어 모든 칸을 확인하세요.</small><div class="boardWrap"><div id="board" class="board"></div></div><div class="completeRow"><button class="btn complete" data-complete="3">STEP 3 완료</button></div></section>
 
-<section class="section" id="s4"><div class="head"><div class="num">STEP 4</div><div><h2>🎲 VERSION 1 만들기</h2><p>이번에는 완성된 게임을 만들지 않아요. <b>게임판 → 주사위 → 말 이동</b>이 제대로 되는지 먼저 확인해요.</p><span class="time">⏱ 8분</span></div></div><div class="countTable"><div class="countHead">칸 종류</div><div class="countHead">개수</div><div>🚩 시작</div><div>1</div><div>💼 직업탐험</div><div>6</div><div>💭 나를 알아보기</div><div>4</div><div>🧩 직업 상황 해결</div><div>4</div><div>💪 역량 획득</div><div>3</div><div>🎁 진로 찬스</div><div>3</div><div>⚡ 진로 위기</div><div>2</div><div>🌟 직업 융합</div><div>1</div><div class="countTotal">합계</div><div class="countTotal">24</div></div><div id="ready" class="notice" style="margin-top:14px"></div><div class="field" style="margin-top:13px"><label for="basePrompt">🤖 기본 게임 제작 프롬프트</label><textarea id="basePrompt" class="prompt" readonly></textarea></div><div class="row" style="margin-top:10px"><button class="btn primary copy" data-target="basePrompt">📋 기본 프롬프트 복사</button><button class="btn light download" data-target="basePrompt" data-name="기본게임-프롬프트.txt">텍스트 저장</button></div><div class="completeRow"><button class="btn complete" data-complete="4">VERSION 1 제작 완료</button></div></section>
+<section class="section" id="s4"><div class="head"><div class="num">STEP 4</div><div><h2>🎲 VERSION 1 만들기</h2><p>이번에는 완성된 게임을 만들지 않아요. <b>게임판 → 주사위 → 말 이동</b>이 제대로 되는지 먼저 확인해요.</p><span class="time">⏱ 8분</span></div></div><div class="gameSettings" data-game-settings="4" aria-label="내가 정한 게임 설정"></div><div class="countTable"><div class="countHead">칸 종류</div><div class="countHead">개수</div><div>🚩 시작</div><div>1</div><div>💼 직업탐험</div><div>6</div><div>💭 나를 알아보기</div><div>4</div><div>🧩 직업 상황 해결</div><div>4</div><div>💪 역량 획득</div><div>3</div><div>🎁 진로 찬스</div><div>3</div><div>⚡ 진로 위기</div><div>2</div><div>🌟 직업 융합</div><div>1</div><div class="countTotal">합계</div><div class="countTotal">24</div></div><div id="ready" class="notice" style="margin-top:14px"></div><div class="field" style="margin-top:13px"><label for="basePrompt">🤖 기본 게임 제작 프롬프트</label><textarea id="basePrompt" class="prompt" readonly></textarea></div><div class="row" style="margin-top:10px"><button class="btn primary copy" data-target="basePrompt">📋 기본 프롬프트 복사</button><button class="btn light download" data-target="basePrompt" data-name="기본게임-프롬프트.txt">텍스트 저장</button></div><div class="completeRow"><button class="btn complete" data-complete="4">VERSION 1 제작 완료</button></div></section>
 
 <section class="section" id="s5"><div class="head"><div class="num">STEP 5</div><div><h2>🧪 VERSION 1 TEST</h2><p>게임이 보인다고 바로 다음으로 가지 마세요. 주사위를 실제로 3번 굴려봅니다.</p><span class="time">⏱ 7분</span></div></div><div class="testTable"><div class="testHead">테스트</div><div class="testHead">말이 제대로 이동했나요?</div><div>1회</div><div><select id="testMove1"><option value="">선택</option><option>예</option><option>아니오</option></select></div><div>2회</div><div><select id="testMove2"><option value="">선택</option><option>예</option><option>아니오</option></select></div><div>3회</div><div><select id="testMove3"><option value="">선택</option><option>예</option><option>아니오</option></select></div></div><div class="two" style="margin-top:15px"><div class="field"><label for="v1fun">가장 잘 작동한 점</label><textarea id="v1fun" placeholder="예: 숫자만큼 말이 정확히 이동했다"></textarea></div><div class="field"><label for="v1bug">오류 또는 아쉬운 점</label><textarea id="v1bug" placeholder="예: 도착 칸을 지나도 게임이 끝나지 않았다"></textarea></div></div><div class="field" style="margin-top:12px"><label for="v1FixPrompt">오류 수정 프롬프트</label><textarea id="v1FixPrompt" readonly></textarea></div><button class="btn copy" data-target="v1FixPrompt">📋 수정 프롬프트 복사</button><div class="completeRow"><button class="btn primary complete" data-complete="5">테스트 완료</button></div></section>
 
-<section class="section" id="s6"><div class="head"><div class="num">STEP 6</div><div><h2>게임 속 진로 콘텐츠 만들기</h2><p>직업 상황 카드 4개와 나를 알아보는 질문 4개를 준비해요.</p><span class="time">⏱ 12분</span></div></div><div class="cardbox"><h3>STEP 6-A. 직업 상황 해결 카드</h3><p class="muted">상황 아이디어 요청 프롬프트로 8개를 제안받은 뒤, 게임에 넣을 4개를 골라 아래에 붙여넣으세요.</p><div class="two"><div class="field"><label for="sit1">상황 카드 ①</label><input id="sit1" type="text" placeholder="예: 생방송 5분 전 마이크가 고장 났다"></div><div class="field"><label for="sit2">상황 카드 ②</label><input id="sit2" type="text" placeholder="직업과 연결된 문제"></div><div class="field"><label for="sit3">상황 카드 ③</label><input id="sit3" type="text" placeholder="직업과 연결된 문제"></div><div class="field"><label for="sit4">상황 카드 ④</label><input id="sit4" type="text" placeholder="직업과 연결된 문제"></div></div><div id="situationGate" class="gate">직업 상황 4개를 모두 작성해야 다음 단계로 갈 수 있어요.</div><div class="field" style="margin-top:11px"><label for="situationPrompt">상황 아이디어 요청 프롬프트</label><textarea id="situationPrompt" readonly></textarea></div><button class="btn copy" data-target="situationPrompt">📋 상황 아이디어 프롬프트 복사</button></div><div class="cardbox" style="margin-top:13px"><h3>STEP 6-B. 나를 알아보기 질문 4개 선택</h3><p class="questionIntro">아래 8개 중 내 게임에 넣을 질문을 정확히 4개 선택하세요.</p><div id="questionPicks" class="questiongrid"></div><div id="questionCount" class="selection">선택한 질문 0 / 4</div></div><div class="field" style="margin-top:13px"><label for="contentPrompt">진로 콘텐츠 추가 프롬프트</label><textarea id="contentPrompt" class="prompt" readonly></textarea></div><button class="btn primary copy" data-target="contentPrompt">📋 진로 콘텐츠 프롬프트 복사</button><div class="completeRow"><button class="btn complete" data-complete="6">진로 콘텐츠 준비 완료</button></div></section>
+<section class="section" id="s6"><div class="head"><div class="num">STEP 6</div><div><h2>게임 속 진로 콘텐츠 만들기</h2><p>직업 상황 카드 4개와 나를 알아보는 질문 4개를 준비해요.</p><span class="time">⏱ 12분</span></div></div><div class="gameSettings" data-game-settings="6" aria-label="내가 정한 게임 설정"></div><div class="cardbox"><h3>STEP 6-A. 직업 상황 해결 카드</h3><p class="muted">MY CAREER 6와 관련된 직업 상황 해결 미션 4개를 받아요. 마음에 들지 않는 내용이 있으면 직접 수정해도 됩니다. 확인한 상황을 아래 4칸에 적어 주세요.</p><div class="two"><div class="field"><label for="sit1">상황 카드 ①</label><input id="sit1" type="text" placeholder="예: 생방송 5분 전 마이크가 고장 났다"></div><div class="field"><label for="sit2">상황 카드 ②</label><input id="sit2" type="text" placeholder="직업과 연결된 문제"></div><div class="field"><label for="sit3">상황 카드 ③</label><input id="sit3" type="text" placeholder="직업과 연결된 문제"></div><div class="field"><label for="sit4">상황 카드 ④</label><input id="sit4" type="text" placeholder="직업과 연결된 문제"></div></div><div id="situationGate" class="gate">직업 상황 4개를 모두 작성해야 다음 단계로 갈 수 있어요.</div><div class="field" style="margin-top:11px"><label for="situationPrompt">상황 아이디어 요청 프롬프트</label><textarea id="situationPrompt" readonly></textarea></div><button class="btn copy" data-target="situationPrompt">📋 상황 아이디어 프롬프트 복사</button></div><div class="cardbox" style="margin-top:13px"><h3>STEP 6-B. 나를 알아보기 질문 4개 선택</h3><p class="questionIntro">아래 8개 중 내 게임에 넣을 질문을 정확히 4개 선택하세요.</p><div id="questionPicks" class="questiongrid"></div><div id="questionCount" class="selection">선택한 질문 0 / 4</div></div><div class="field" style="margin-top:13px"><label for="contentPrompt">진로 콘텐츠 추가 프롬프트</label><textarea id="contentPrompt" class="prompt" readonly></textarea></div><button class="btn primary copy" data-target="contentPrompt">📋 진로 콘텐츠 프롬프트 복사</button><div class="completeRow"><button class="btn complete" data-complete="6">진로 콘텐츠 준비 완료</button></div></section>
 
-<section class="section" id="s7"><div class="head"><div class="num">STEP 7</div><div><h2>👥 게임 완성 + 진로 탐색 보고서</h2><p>먼저 1~2인 게임이 제대로 작동하는지 확인하고, 게임이 끝났을 때 나만의 진로 탐색 보고서가 나오도록 완성해요.</p><span class="time">⏱ 15분</span></div></div><div class="cardbox"><h3>STEP 7-A. 1~2인 게임 완성하기</h3><div class="field" style="margin-top:11px"><label for="finalPrompt">완성 게임 프롬프트</label><textarea id="finalPrompt" class="prompt" readonly></textarea></div><button class="btn primary copy" data-target="finalPrompt">📋 1~2인 게임 프롬프트 복사</button><h3 class="verifyTitle">🧪 GAME TEST</h3><div class="reportChecks"><label><span>A가 활동한 뒤 B 차례가 되는가?</span><select id="gameTestTurn"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>두 사람의 점수가 따로 기록되는가?</span><select id="gameTestScore"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>역량 카드가 플레이어별로 따로 저장되는가?</span><select id="gameTestSkill"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>활동을 마친 뒤 다시 주사위를 굴릴 수 있는가?</span><select id="gameTestDice"><option value="">선택</option><option>예</option><option>아니오</option></select></label></div><div class="field" style="margin-top:12px"><label for="finalBug">완성판에서 발견한 오류</label><input id="finalBug" type="text" placeholder="없다면 '없음'이라고 적어요"></div><div class="field" style="margin-top:10px"><label for="finalFixPrompt">완성판 오류 수정 프롬프트</label><textarea id="finalFixPrompt" readonly></textarea></div><button class="btn copy" data-target="finalFixPrompt">📋 오류 수정 프롬프트 복사</button></div><div class="cardbox reportBuilder"><h3>STEP 7-B. 📊 나만의 진로 탐색 보고서 추가하기</h3><p class="muted">게임이 끝났을 때 점수만 보여주지 않고, 어떤 직업과 역량을 만났는지 돌아보는 결과 화면을 추가합니다.</p><div class="notice">게임이 나에게 맞는 직업을 판정하는 것이 아닙니다. 게임은 <b>오늘의 기록</b>을 보여주고, 어떤 직업이 더 궁금한지는 내가 직접 선택합니다.</div><div class="field" style="margin-top:12px"><label for="reportPrompt">진로 탐색 보고서 추가 프롬프트</label><textarea id="reportPrompt" class="prompt reportPrompt" readonly></textarea></div><button class="btn primary copy" data-target="reportPrompt">📋 진로 탐색 보고서 프롬프트 복사</button></div><h3 class="verifyTitle">🧪 보고서 기능 확인</h3><div class="reportChecks"><label><span>게임 종료 버튼이 있고 정상적으로 종료되는가?</span><select id="reportEnd"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>종료 후 경험 점수·역량·만난 직업이 표시되는가?</span><select id="reportSummary"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>가장 많이 얻은 역량과 오늘의 탐험 칭호가 표시되는가?</span><select id="reportSkill"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>더 궁금해진 직업과 이유를 선택할 수 있는가?</span><select id="reportCurious"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>앞으로 더 알아보고 싶은 내용을 선택할 수 있는가?</span><select id="reportNext"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>'내 진로 탐색 보고서 복사' 버튼이 작동하는가?</span><select id="reportCopy"><option value="">선택</option><option>예</option><option>아니오</option></select></label></div><div class="completeRow"><button class="btn primary complete" data-complete="7">STEP 7 완료</button></div></section>
+<section class="section" id="s7"><div class="head"><div class="num">STEP 7</div><div><h2>👥 게임 완성 + 진로 탐색 보고서</h2><p>먼저 1~2인 게임이 제대로 작동하는지 확인하고, 게임이 끝났을 때 나만의 진로 탐색 보고서가 나오도록 완성해요.</p><span class="time">⏱ 15분</span></div></div><div class="gameSettings" data-game-settings="7" aria-label="내가 정한 게임 설정"></div><div class="cardbox"><h3>STEP 7-A. 1~2인 게임 완성하기</h3><div class="field" style="margin-top:11px"><label for="finalPrompt">완성 게임 프롬프트</label><textarea id="finalPrompt" class="prompt" readonly></textarea></div><button class="btn primary copy" data-target="finalPrompt">📋 1~2인 게임 프롬프트 복사</button><h3 class="verifyTitle">🧪 GAME TEST</h3><div class="reportChecks"><label><span>A가 활동한 뒤 B 차례가 되는가?</span><select id="gameTestTurn"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>두 사람의 점수가 따로 기록되는가?</span><select id="gameTestScore"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>역량 카드가 플레이어별로 따로 저장되는가?</span><select id="gameTestSkill"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>활동을 마친 뒤 다시 주사위를 굴릴 수 있는가?</span><select id="gameTestDice"><option value="">선택</option><option>예</option><option>아니오</option></select></label></div><div class="field" style="margin-top:12px"><label for="finalBug">완성판에서 발견한 오류</label><input id="finalBug" type="text" placeholder="없다면 '없음'이라고 적어요"></div><div class="field" style="margin-top:10px"><label for="finalFixPrompt">완성판 오류 수정 프롬프트</label><textarea id="finalFixPrompt" readonly></textarea></div><button class="btn copy" data-target="finalFixPrompt">📋 오류 수정 프롬프트 복사</button></div><div class="cardbox reportBuilder"><h3>STEP 7-B. 📊 나만의 진로 탐색 보고서 추가하기</h3><p class="muted">게임이 끝났을 때 점수만 보여주지 않고, 어떤 직업과 역량을 만났는지 돌아보는 결과 화면을 추가합니다.</p><div class="notice">게임이 나에게 맞는 직업을 판정하는 것이 아닙니다. 게임은 <b>오늘의 기록</b>을 보여주고, 어떤 직업이 더 궁금한지는 내가 직접 선택합니다.</div><div class="field" style="margin-top:12px"><label for="reportPrompt">진로 탐색 보고서 추가 프롬프트</label><textarea id="reportPrompt" class="prompt reportPrompt" readonly></textarea></div><button class="btn primary copy" data-target="reportPrompt">📋 진로 탐색 보고서 프롬프트 복사</button></div><h3 class="verifyTitle">🧪 보고서 기능 확인</h3><div class="reportChecks"><label><span>게임 종료 버튼이 있고 정상적으로 종료되는가?</span><select id="reportEnd"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>종료 후 경험 점수·역량·만난 직업이 표시되는가?</span><select id="reportSummary"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>가장 많이 얻은 역량과 오늘의 탐험 칭호가 표시되는가?</span><select id="reportSkill"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>더 궁금해진 직업과 이유를 선택할 수 있는가?</span><select id="reportCurious"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>앞으로 더 알아보고 싶은 내용을 선택할 수 있는가?</span><select id="reportNext"><option value="">선택</option><option>예</option><option>아니오</option></select></label><label><span>'내 진로 탐색 보고서 복사' 버튼이 작동하는가?</span><select id="reportCopy"><option value="">선택</option><option>예</option><option>아니오</option></select></label></div><div class="completeRow"><button class="btn primary complete" data-complete="7">STEP 7 완료</button></div></section>
 
 
 <section class="section" id="s8"><div class="head"><div class="num">STEP 8</div><div><h2>MY UPGRADE</h2><p>내 게임에 한 가지 특별한 장치를 더해요.</p><span class="time">⏱ 5분</span></div></div><div id="upgrades" class="upgradegrid"></div><div class="field" style="margin-top:12px"><label for="upgradeDetail">어떻게 바꾸고 싶은지 구체적으로</label><input id="upgradeDetail" type="text" maxlength="160" placeholder="예: 직업 카드 3장을 모으면 탐험가 배지를 보여 줘"></div><div class="field" style="margin-top:10px"><label for="upgradePrompt">업그레이드 프롬프트</label><textarea id="upgradePrompt" readonly></textarea></div><button class="btn copy" data-target="upgradePrompt">📋 업그레이드 프롬프트 복사</button><div class="completeRow"><button class="btn complete" data-complete="8">MY UPGRADE 완료</button></div></section>
@@ -226,9 +227,130 @@ function renderBonus(v){
  $('copyBonus').disabled=!state.bonusFeature;
 }
 function renderBoard(v){const j=six(v),cells=[['🚩','시작'],['💼',j[0]||'직업탐험 1'],['💭','나를 알아보기'],['🧩','직업 상황 해결'],['💪','역량 획득'],['🎁','진로 찬스'],['💼',j[1]||'직업탐험 2'],['⚡','진로 위기'],['💭','나를 알아보기'],['🧩','직업 상황 해결'],['💼',j[2]||'직업탐험 3'],['🎁','진로 찬스'],['💪','역량 획득'],['💭','나를 알아보기'],['🧩','직업 상황 해결'],['💼',j[3]||'직업탐험 4'],['⚡','진로 위기'],['🎁','진로 찬스'],['💭','나를 알아보기'],['💼',j[4]||'직업탐험 5'],['🧩','직업 상황 해결'],['💪','역량 획득'],['🌟','직업 융합'],['🏁',(j[5]||'직업탐험 6')+' · 도착']];const pos=i=>i<7?[1,i+1]:i<12?[i-5,7]:i<19?[7,19-i]:[25-i,1];$('board').innerHTML=cells.map(([em,n],i)=>{const [row,col]=pos(i);return `<div class="tile" style="grid-row:${row};grid-column:${col}"><small>${i+1} / 24</small><b>${em} ${esc(n)}</b></div>`;}).join('');}
-function basePrompt(v){const j=six(v),jobList=j.length===6?j:['직업 1','직업 2','직업 3','직업 4','직업 5','직업 6'];return `중학생 진로 탐색 수업에서 사용할 웹 기반 부루마블 게임을 만들어줘.\n\n게임 제목은 "${v.gameTitle||'미래 직업 원정대'}"이고, 전체 디자인은 "${v.customTheme||state.theme||'미래 도시'}" 분위기로 만들어줘.\n\n게임판은 사각형 가장자리를 따라 총 24칸으로 구성해줘.\n\n- 시작 1칸\n- 직업탐험 6칸\n- 나를 알아보기 4칸\n- 직업 상황 해결 4칸\n- 역량 획득 3칸\n- 진로 찬스 3칸\n- 진로 위기 2칸\n- 직업 융합 1칸\n\n직업탐험 6칸에는 반드시 다음 직업을 하나씩 넣어줘.\n\n${jobList.map((n,i)=>`${i+1}. ${n}`).join('\n')}\n\n다른 직업으로 바꾸거나 삭제하지 마. 24번째 칸은 6번째 직업탐험 칸이면서 도착 칸으로 사용해줘.\n\n이번 단계에서는 아직 각 칸의 자세한 활동이나 점수 기능을 만들지 말고 다음 기능까지만 만들어줘.\n\n1. 24칸 게임판\n2. 큰 '주사위 굴리기' 버튼\n3. 1~6 무작위 주사위\n4. 나온 숫자만큼 말이 순서대로 이동\n5. 도착 칸을 눈에 띄게 표시\n6. 말이 24번째 도착 칸에 도착하면 게임을 종료\n7. 남은 이동 수가 도착 칸을 지나갈 만큼 나오면 도착 칸에서 멈추고 게임을 종료\n8. 게임이 종료되면 주사위 버튼을 잠그고 도착 메시지를 표시\n9. 이동 중에는 주사위 버튼 잠금\n\n태블릿에서도 게임판과 글씨가 잘 보이게 해줘.\nHTML, CSS, JavaScript를 하나의 파일에 작성하고 Gemini Canvas에서 바로 실행할 수 있게 해줘.\n지금은 기본 게임이 제대로 움직이는 것이 가장 중요해. 화려한 추가 기능은 아직 넣지 마.`;}
-function situationPrompt(v){const list=six(v),jobs=list.length===6?list:['직업 1','직업 2','직업 3','직업 4','직업 5','직업 6'];return `나는 중학생 진로 부루마블 게임을 만들고 있어.\n\n게임에 들어가는 직업은 다음 6개야.\n\n${jobs.map((n,i)=>`${i+1}. ${n}`).join('\n')}\n\n이 직업과 관련된 '직업 상황 해결 미션'을 8개 제안해줘. 중학교 1학년 학생이 이해할 수 있고 약 30초 정도 생각해서 자기 해결 방법을 말하거나 입력할 수 있는 상황으로 만들어줘.\n\n예: "게임 기획자가 만든 게임을 사람들이 너무 어렵다고 합니다. 어떻게 바꾸겠습니까?"\n\n직업 이름과 상황을 짧고 쉽게 보여줘. 아직 게임이나 코드는 수정하지 마. 상황 아이디어만 제안해줘.`;}
-function contentPrompt(v){const jobs=six(v),sits=[v.sit1,v.sit2,v.sit3,v.sit4],qs=state.pickedQuestions.map(i=>reflectionQuestions[i]);return `지금 만들고 있는 "${v.gameTitle||'미래 직업 원정대'}" 기본 부루마블 게임에 진로 활동 기능을 추가해줘.\n\n중요: 현재 잘 작동하고 있는 24칸 게임판, 주사위, 말 이동, 도착 칸 표시와 게임 종료 기능은 삭제하거나 변경하지 마.\n\n[1. 직업탐험 6칸]\n${jobs.length?jobs.join('\n'):'MY CAREER 6 직업을 먼저 입력해줘'}\n\n각 직업 칸에 도착하면 태블릿에서도 보기 쉬운 큰 팝업 카드에 직업 이름, 주로 하는 일, 일하는 장소, 필요한 능력이나 태도, 사람이나 사회에 주는 도움을 보여줘. '탐험 완료'를 누르면 경험 점수 2점을 받게 해줘.\n\n[2. 나를 알아보기 4칸]\n${qs.length?qs.map((q,i)=>`${i+1}. ${q}`).join('\n'):'선택한 질문 4개가 아직 없음'}\n\n학생이 짧게 답을 입력하고 '답변 완료'를 누르면 경험 점수 1점을 받게 해줘.\n\n[3. 직업 상황 해결 4칸]\n${sits.map((s,i)=>`${i+1}. ${s||'(STEP 6-A에서 고른 상황을 입력하세요)'}`).join('\n')}\n\n각 상황에 30초 생각 타이머와 해결 방법 입력칸을 넣어줘. '해결 완료'를 누르면 문제해결 역량 카드 1장과 경험 점수 2점을 받게 해줘.\n\n[4. 역량 획득 3칸]\n의사소통, 협업, 창의성, 문제해결, 책임감, 디지털 활용 중 하나를 무작위로 획득하게 해줘.\n\n[5. 진로 찬스 3칸]\n경험 점수 +2 / 원하는 역량 카드 1장 / 2칸 앞으로 이동 중 하나가 무작위로 나오게 해줘.\n\n[6. 진로 위기 2칸]\n예상하지 못한 변화가 생겼을 때 다른 방법이나 대안을 짧게 생각하고 입력하면 계속 진행할 수 있게 해줘.\n\n[7. 직업 융합 1칸]\n'내가 좋아하는 것 + 직업' 또는 '직업 + 직업'을 합쳐 새로운 직업을 상상해서 입력하게 해줘. 예: 축구 + 데이터 분석 → 스포츠 데이터 전문가. 완료하면 경험 점수 3점을 받게 해줘.\n\n모든 활동은 태블릿에서 보기 쉬운 큰 팝업으로 만들어줘. 기존 기능은 그대로 유지하고 새로운 진로 활동 기능만 추가해줘. 수정된 전체 HTML을 보여줘.`;}
+function gameSettings(v){return {title:v.gameTitle||'미래 직업 원정대',theme:v.customTheme||state.theme||'미래 도시',goal:v.goal||'아직 선택하지 않음',special:v.special||'아직 선택하지 않음',ownRule:v.ownRule||'아직 입력하지 않음'};}
+function renderGameSettings(v){const s=gameSettings(v);document.querySelectorAll('[data-game-settings]').forEach(box=>{box.innerHTML=`<b>🎮 내가 정한 게임 설정</b><span>승리 조건: ${esc(s.goal)}</span><span>특별 칸: ${esc(s.special)}</span><span>나의 규칙: ${esc(s.ownRule)}</span>`;});}
+function goalInstructions(goal){
+ if(goal==='직업 카드 3장을 먼저 모으면 승리')return '각 플레이어가 직업탐험 활동을 마쳐 획득한 직업 카드를 따로 기록하고, 누군가 3장을 모은 즉시 조건 달성으로 게임을 종료해줘.';
+ if(goal==='진로 경험 점수 10점을 먼저 얻으면 승리')return '활동 완료 직후 플레이어별 진로 경험 점수를 확인하고, 누군가 10점 이상이 되면 즉시 조건 달성으로 게임을 종료해줘.';
+ if(goal==='서로 다른 직업 4개를 만나 출발점으로 돌아오면 승리')return '각 플레이어가 실제로 만난 서로 다른 직업을 따로 기록해줘. 4개 이상의 서로 다른 직업을 만난 뒤 그 플레이어의 말이 출발 칸에 정확히 도착하면 조건 달성으로 게임을 종료해줘. 출발 칸을 지나가기만 한 경우에는 계속 진행해줘.';
+ if(goal==='두 명이 협력해 총 15점을 얻으면 함께 승리')return '2인 플레이에서는 두 플레이어의 진로 경험 점수 합계가 15점 이상이면 함께 조건을 달성한 것으로 게임을 종료해줘. 1인 플레이에서도 게임을 할 수 있도록 혼자 15점을 얻으면 개인 완료로 처리해줘.';
+ return '학생이 고른 승리 조건을 활동 완료 직후 확인하여 실제로 작동하게 해줘.';
+}
+function specialInstructions(special){
+ if(special.startsWith('아이디어 카드:'))return '게임판의 적절한 특별 칸에서 해결 아이디어를 짧게 말하거나 입력하게 하고, 완료하면 해당 플레이어에게 경험 점수 2점을 줘.';
+ if(special.startsWith('순간이동:'))return '게임판의 적절한 특별 칸에 도착하면 말을 2칸 앞으로 이동시켜줘. 마지막 칸을 지나면 시작 칸부터 이어서 이동하고, 이동 중 입력과 주사위 버튼을 안전하게 잠가줘.';
+ if(special.startsWith('협력 미션:'))return '특별 칸에서 두 플레이어가 함께 미션을 마치면 각각 경험 점수 2점을 줘. 1인 플레이에서는 혼자 완료하면 본인에게 2점을 줘.';
+ if(special.startsWith('직업 교환소:'))return '게임판의 적절한 특별 칸에서 가진 직업 카드 1장을 다른 직업 카드와 바꿀 수 있게 해줘. 카드가 없으면 건너뛰게 하고, 실제로 만난 직업 기록은 교환과 별도로 유지해줘.';
+ return '선택한 특별 칸을 게임판의 적절한 위치 또는 이벤트로 구현해줘.';
+}
+function basePrompt(v){
+ const j=six(v),jobList=j.length===6?j:['직업 1','직업 2','직업 3','직업 4','직업 5','직업 6'],s=gameSettings(v);
+ return `중학생 진로 탐색 수업에서 사용할 웹 기반 부루마블 게임을 만들어줘.
+
+[내가 정한 게임 설정]
+게임 제목: ${s.title}
+세계관: ${s.theme}
+최종 승리 조건: ${s.goal}
+특별 칸: ${s.special}
+내가 추가한 규칙: ${s.ownRule}
+
+게임 제목과 세계관을 게임의 화면과 분위기에 반영해줘. 승리 조건, 특별 칸, 추가 규칙은 다음 단계에서도 유지할 설정이야. ${s.ownRule==='없음'?'추가 규칙이 없음이라면 새 규칙을 임의로 만들지 마.':''}
+
+이 승리 조건은 최종 게임에서 구현할 예정이므로 기억해두고, 이번 VERSION 1에서는 게임판, 주사위, 말 이동 기능을 먼저 완성해줘. 특별 칸과 추가 규칙도 지금 억지로 구현하지 말고 최종 게임에 반영할 설정으로 유지해줘.
+
+게임판은 사각형 가장자리를 따라 총 24칸으로 구성해줘.
+
+- 시작 1칸
+- 직업탐험 6칸
+- 나를 알아보기 4칸
+- 직업 상황 해결 4칸
+- 역량 획득 3칸
+- 진로 찬스 3칸
+- 진로 위기 2칸
+- 직업 융합 1칸
+
+직업탐험 6칸에는 반드시 다음 직업을 하나씩 넣어줘.
+
+${jobList.map((n,i)=>`${i+1}. ${n}`).join('\n')}
+
+다른 직업으로 바꾸거나 삭제하지 마. 24번째 칸은 6번째 직업탐험 칸이면서 시각적인 도착 칸으로 사용해줘.
+
+이번 단계에서는 아직 각 칸의 자세한 활동이나 점수 기능을 만들지 말고 다음 기능까지만 만들어줘.
+
+1. 24칸 게임판
+2. 큰 '주사위 굴리기' 버튼
+3. 1~6 무작위 주사위
+4. 나온 숫자만큼 말이 순서대로 이동
+5. 도착 칸을 눈에 띄게 표시
+6. VERSION 1에서만 사용할 말 이동 테스트용 임시 종료 조건: 말이 24번째 칸에 도착하면 종료
+7. VERSION 1에서 남은 이동 수가 24번째 칸을 지나갈 만큼 나오면 그 칸에서 멈추고 임시 종료
+8. 임시 종료 후 주사위 버튼을 잠그고 도착 메시지를 표시
+9. 이동 중에는 주사위 버튼 잠금
+
+24번째 칸의 임시 종료를 학생이 선택한 최종 승리 조건으로 취급하지 마. STEP 7에서 최종 게임을 만들 때는 선택한 승리 조건이 우선이야.
+
+태블릿에서도 게임판과 글씨가 잘 보이게 해줘.
+HTML, CSS, JavaScript를 하나의 파일에 작성하고 Gemini Canvas에서 바로 실행할 수 있게 해줘.
+지금은 기본 게임이 제대로 움직이는 것이 가장 중요해. 화려한 추가 기능은 아직 넣지 마.`;
+}
+function situationPrompt(v){
+ const list=six(v),jobs=list.length===6?list:['직업 1','직업 2','직업 3','직업 4','직업 5','직업 6'];
+ return `나는 중학생 진로 부루마블 게임을 만들고 있어.
+
+MY CAREER 6에 들어가는 직업은 다음과 같아.
+
+${jobs.map((n,i)=>`${i+1}. ${n}`).join('\n')}
+
+이 직업과 관련된 '직업 상황 해결 미션'을 정확히 4개만 제안해줘. 여섯 직업을 골고루 참고하고, 같은 직업만 반복하지 말아줘. 필요하면 한 상황에 서로 다른 두 직업이 함께 등장해도 좋아.
+
+중학교 1학년 학생이 이해하기 쉽게, 약 30초 동안 생각한 뒤 자기 해결 방법을 말하거나 짧게 입력할 수 있는 상황으로 만들어줘. 직업 이름과 상황을 각각 짧고 쉽게 표시하고 1~4번으로 번호를 붙여줘. 학생이 그대로 사용할 수도 있고 마음에 들지 않는 부분만 고쳐 쓸 수도 있게 완결된 문장으로 써줘.
+
+예: 게임 기획자 — 게임을 해본 사람들이 너무 어렵다고 합니다. 어떻게 바꾸겠습니까?
+
+아직 게임이나 코드는 수정하지 마. 상황 아이디어 4개만 보여줘.`;
+}
+function contentPrompt(v){
+ const jobs=six(v),sits=[v.sit1,v.sit2,v.sit3,v.sit4],qs=state.pickedQuestions.map(i=>reflectionQuestions[i]),s=gameSettings(v);
+ return `지금 만들고 있는 "${s.title}" 기본 부루마블 게임에 진로 활동 기능을 추가해줘.
+
+중요: 현재 잘 작동하고 있는 24칸 게임판, 주사위, 말 이동, 도착 칸 표시와 VERSION 1의 임시 종료 기능은 이 단계에서 삭제하거나 변경하지 마.
+
+기존에 학생이 정한 게임 설정을 유지해줘.
+- 최종 승리 조건: ${s.goal}
+- 특별 칸: ${s.special}
+- 내가 추가한 규칙: ${s.ownRule}
+
+진로 콘텐츠를 추가하면서 이 설정을 삭제하거나 임의로 변경하지 마. 현재 24번째 칸 도착 종료는 말 이동 테스트용 임시 조건이고, 위 승리 조건은 STEP 7 완성 게임에서 실제로 구현할 설정이야. ${s.ownRule==='없음'?'추가 규칙이 없음이면 새 규칙을 임의로 만들지 마.':''}
+
+[1. 직업탐험 6칸]
+${jobs.length?jobs.join('\n'):'MY CAREER 6 직업을 먼저 입력해줘'}
+
+각 직업 칸에 도착하면 태블릿에서도 보기 쉬운 큰 팝업 카드에 직업 이름, 주로 하는 일, 일하는 장소, 필요한 능력이나 태도, 사람이나 사회에 주는 도움을 보여줘. '탐험 완료'를 누르면 경험 점수 2점을 받게 해줘.
+
+[2. 나를 알아보기 4칸]
+${qs.length?qs.map((q,i)=>`${i+1}. ${q}`).join('\n'):'선택한 질문 4개가 아직 없음'}
+
+학생이 짧게 답을 입력하고 '답변 완료'를 누르면 경험 점수 1점을 받게 해줘.
+
+[3. 직업 상황 해결 4칸]
+${sits.map((s,i)=>`${i+1}. ${s||'(STEP 6-A에서 확인·수정한 상황을 입력하세요)'}`).join('\n')}
+
+각 상황에 30초 생각 타이머와 해결 방법 입력칸을 넣어줘. '해결 완료'를 누르면 문제해결 역량 카드 1장과 경험 점수 2점을 받게 해줘.
+
+[4. 역량 획득 3칸]
+의사소통, 협업, 창의성, 문제해결, 책임감, 디지털 활용 중 하나를 무작위로 획득하게 해줘.
+
+[5. 진로 찬스 3칸]
+경험 점수 +2 / 원하는 역량 카드 1장 / 2칸 앞으로 이동 중 하나가 무작위로 나오게 해줘.
+
+[6. 진로 위기 2칸]
+예상하지 못한 변화가 생겼을 때 다른 방법이나 대안을 짧게 생각하고 입력하면 계속 진행할 수 있게 해줘.
+
+[7. 직업 융합 1칸]
+'내가 좋아하는 것 + 직업' 또는 '직업 + 직업'을 합쳐 새로운 직업을 상상해서 입력하게 해줘. 예: 축구 + 데이터 분석 → 스포츠 데이터 전문가. 완료하면 경험 점수 3점을 받게 해줘.
+
+모든 활동은 태블릿에서 보기 쉬운 큰 팝업으로 만들어줘. 기존 기능은 그대로 유지하고 새로운 진로 활동 기능만 추가해줘. 수정된 전체 HTML을 보여줘.`;
+}
 function step6Ready(showMessage=true){const v=vals(),missing=['sit1','sit2','sit3','sit4'].filter(id=>!v[id]);if(missing.length){if(showMessage){toast(`직업 상황을 4개 모두 작성하세요. 현재 ${4-missing.length}/4개 작성했어요.`);$(missing[0]).focus();$(missing[0]).scrollIntoView({behavior:'smooth',block:'center'});}return false;}if(state.pickedQuestions.length!==4){if(showMessage){toast(`나를 알아보기 질문을 정확히 4개 선택하세요. 현재 ${state.pickedQuestions.length}/4개예요.`);$('questionPicks').scrollIntoView({behavior:'smooth',block:'center'});}return false;}return true;}
 function missingAnswer(n){
  const v=vals(),first=ids=>ids.find(id=>!v[id]);
@@ -244,7 +366,44 @@ function missingAnswer(n){
  return null;
 }
 function stepReady(n,showMessage=true){const missing=missingAnswer(n);if(!missing)return true;if(showMessage){toast(missing.message);const element=$(missing.id);element.scrollIntoView({behavior:'smooth',block:'center'});if(element.matches('input,select,textarea'))element.focus({preventScroll:true});}return false;}
-function finalPrompt(v){return `현재 "${v.gameTitle||'미래 직업 원정대'}" 진로 부루마블의 기존 기능은 모두 잘 작동하고 있어.\n\n기존 기능은 그대로 유지하면서 1명 또는 2명이 플레이할 수 있게 해줘.\n\n- 참가 인원: 1명 또는 2명\n- 게임 시작 전에 참가 인원을 선택\n- 참가자별 별명 입력\n- 실제 이름 대신 별명을 사용하라는 안내 표시\n- 체험 모드: 각 플레이어 6턴\n- 게임 모드: 각 플레이어 10턴\n- 게임 시작 전에 체험 모드와 게임 모드 중 하나를 선택\n- 플레이어마다 다른 색의 말\n- 현재 차례인 플레이어의 별명을 크게 표시\n- 직업탐험, 자기이해 질문, 상황 해결 등 도착한 칸의 활동을 완료한 후 다음 사람 차례로 변경\n- 플레이어별 경험 점수, 역량 카드, 만난 직업을 서로 섞이지 않게 따로 기록\n- 남은 턴 수를 플레이어별로 표시\n- 선택한 모드의 모든 플레이어 턴이 끝나면 게임 종료\n\n게임 종료 후 1등만 강조하지 말고, 각 플레이어가 오늘 만난 직업, 획득한 역량 카드, 경험 점수와 작성한 답변을 각각 확인하게 해줘. 서로 다른 결과를 비교하거나 순위를 매기기보다 각자의 진로 탐색 경험을 돌아보게 해줘.\n\n현재까지 만든 24칸 게임판, 직업과 진로 활동 카드, 경험 점수, 역량 카드, 주사위, 말 이동, 도착 칸 표시 기능은 삭제하거나 변경하지 마. 기존 기능을 유지한 실행 가능한 전체 HTML을 보여줘.`;}
+function finalPrompt(v){
+ const s=gameSettings(v);
+ return `현재 "${s.title}" 진로 부루마블의 기존 기능은 모두 잘 작동하고 있어.
+
+기존 기능은 그대로 유지하면서 1명 또는 2명이 플레이할 수 있게 해줘.
+
+[최종 게임 규칙]
+승리 조건: ${s.goal}
+특별 칸: ${s.special}
+학생이 만든 규칙: ${s.ownRule}
+
+STEP 3에서 정한 최종 승리 조건을 실제 상태와 연결해서 구현해줘. ${goalInstructions(s.goal)}
+
+STEP 3에서 정한 특별 칸을 게임판의 적절한 칸 또는 이벤트로 실제 구현해줘. 기존 24칸의 종류와 개수는 유지하면서 해당 칸의 이벤트로 넣어줘. ${specialInstructions(s.special)}
+
+${s.ownRule==='없음'?'학생이 추가한 규칙은 없음이므로 별도의 규칙을 만들지 마.':`학생이 만든 규칙 "${s.ownRule}"도 실제로 작동하도록 구현해줘.`}
+
+VERSION 1에서 사용한 '무조건 24번째 도착 칸에 가면 종료'는 말 이동 테스트용 임시 규칙이야. 최종 게임에서는 그 임시 종료 규칙을 제거하고 위의 승리 조건을 우선해줘. 24번째 칸은 6번째 직업탐험 칸이자 시각적인 도착 칸으로 유지해도 돼. 최종 게임에서 이동 수가 24번째 칸을 지나면 시작 칸부터 이어서 이동하고, 시작 칸으로 돌아온 위치도 승리 조건 검사에 사용할 수 있게 해줘.
+
+- 참가 인원: 1명 또는 2명
+- 게임 시작 전에 참가 인원을 선택
+- 참가자별 별명 입력
+- 실제 이름 대신 별명을 사용하라는 안내 표시
+- 체험 모드: 각 플레이어 6턴
+- 게임 모드: 각 플레이어 10턴
+- 게임 시작 전에 체험 모드와 게임 모드 중 하나를 선택
+- 플레이어마다 다른 색의 말
+- 현재 차례인 플레이어의 별명을 크게 표시
+- 직업탐험, 자기이해 질문, 상황 해결 등 도착한 칸의 활동을 완료한 후 승리 조건을 확인하고, 게임이 계속될 때만 다음 사람 차례로 변경
+- 플레이어별 경험 점수, 역량 카드, 만난 직업을 서로 섞이지 않게 따로 기록
+- 남은 턴 수를 플레이어별로 표시
+- 위 승리 조건을 먼저 달성하면 즉시 게임 종료
+- 선택한 모드의 모든 플레이어 턴을 사용해도 게임 종료하고 탐험 결과를 보여줘. 조건을 달성하지 않았는데 억지로 승자를 정하지 마.
+
+게임 종료 후 1등만 강조하지 말고, 각 플레이어가 오늘 만난 직업, 획득한 역량 카드, 경험 점수와 작성한 답변을 각각 확인하게 해줘. 서로 다른 결과를 비교하거나 순위를 매기기보다 각자의 진로 탐색 경험을 돌아보게 해줘.
+
+현재까지 만든 24칸 게임판, 직업과 진로 활동 카드, 경험 점수, 역량 카드, 주사위, 말 이동, 도착 칸 표시 기능은 삭제하거나 변경하지 마. 기존 기능과 선택한 최종 규칙을 유지한 실행 가능한 전체 HTML을 보여줘.`;
+}
 function reportPrompt(v){return `현재 "${v.gameTitle||'미래 직업 원정대'}" 진로 부루마블 게임의 모든 기능이 잘 작동하고 있어.
 
 기존의
@@ -344,7 +503,7 @@ function reportPrompt(v){return `현재 "${v.gameTitle||'미래 직업 원정대
 완성된 보고서와 게임 종료 상태를 이 기기의 브라우저에 자동 저장해줘. 학생이 다른 내용을 복사하거나 게임 화면을 새로고침해도, 같은 브라우저에서 '내 보고서 다시 보기' 버튼으로 참가자별 보고서를 열고 '내 진로 탐색 보고서 복사'를 다시 누를 수 있게 해줘. 보고서가 자동 저장되는 기기는 현재 사용하는 기기뿐이라는 안내도 작게 보여줘.
 
 태블릿에서 읽기 쉽도록 결과 화면을 카드 형태로 만들어줘. 기존 게임 기능은 삭제하거나 변경하지 말고 게임 종료 화면과 보고서 기능만 추가해줘. STEP 8 MY UPGRADE 기능도 유지해줘. 게임 종료 화면은 한 번만 보여줘. 실행 가능한 전체 HTML을 보여줘.`;}
-function update(){const v=vals();state.fields=v;state.manual=$('manualType').value.toUpperCase();const t=type();$('typeResult').textContent=t||'????';$('typeHelp').textContent=t?'오늘의 탐색 힌트예요. 어떤 직업이든 자유롭게 선택하세요.':'8개 질문에 모두 답하면 결과가 나타나요.';renderJobExplorer();renderThemes();renderUpgrades();renderFutureJobs();const j=six(v);if(v.curiousJob&&!j.includes(v.curiousJob)){v.curiousJob='';$('curiousJob').value='';state.fields.curiousJob='';}renderCuriousJobs(j,v.curiousJob);$('jobCount').textContent=state.selected.length;$('selectedJobs').innerHTML=state.selected.length?state.selected.map((x,i)=>`<button type="button" class="chip selectedChip" data-remove="${i}" aria-label="${esc(x)} 선택 취소">${i+1}. ${esc(x)} <span aria-hidden="true">×</span></button>`).join(''):'<span class="muted">카드를 눌러 3개를 골라요.</span>';$('selectedJobs').querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{state.selected.splice(Number(b.dataset.remove),1);update();});$('careerSix').innerHTML=j.length?j.map((x,i)=>`<span class="chip">${i+1}. ${esc(x)}</span>`).join(''):'<span class="muted">6개 직업을 채우면 여기에 모여요.</span>';renderBoard(v);$('basePrompt').value=basePrompt(v);$('v1FixPrompt').value=`기존 게임의 제목·직업·디자인은 유지하고 다음 문제를 고쳐 줘.\n문제: ${v.v1bug||'(테스트 후 입력)'}\n좋았던 점은 유지: ${v.v1fun||'(입력 예정)'}\n수정 뒤 주사위, 이동, 직업 카드, 특별 칸, 승리 조건, 다시 시작을 다시 확인하고 전체 HTML을 보여 줘.`;$('situationPrompt').value=situationPrompt(v);const situationCount=[v.sit1,v.sit2,v.sit3,v.sit4].filter(Boolean).length;$('situationGate').textContent=situationCount===4?'✓ 직업 상황 4개를 모두 작성했어요.':`직업 상황 ${situationCount}/4 작성 · 4개를 모두 작성해야 다음 단계로 갈 수 있어요.`;$('situationGate').classList.toggle('ready',situationCount===4);$('questionCount').textContent=`선택한 질문 ${state.pickedQuestions.length} / 4`;$('contentPrompt').value=contentPrompt(v);$('finalPrompt').value=finalPrompt(v);$('reportPrompt').value=reportPrompt(v);$('finalFixPrompt').value=`현재 완성판의 직업과 진로 콘텐츠는 유지하고 다음 오류를 수정해 줘: ${v.finalBug||'(테스트 후 입력)'}. 1명/2명 턴, 상황·질문 카드, 결과 요약도 함께 점검하고 전체 HTML을 보여 줘.`;$('upgradePrompt').value=`현재 게임의 모든 기능을 유지하면서 '${state.upgrade}' 기능을 추가해 줘. 원하는 모습: ${v.upgradeDetail||'학생이 바로 이해할 수 있게 재미있고 간단하게 구현'}. 기존 디자인과 어울리게 만들고 전체 HTML을 보여 줘.`;renderCareerReport(v);const missing=[];if(state.selected.length<3)missing.push(`탐색 직업 ${3-state.selected.length}개`);if(!v.ownJob1||!v.ownJob2)missing.push('관심 직업 2개');if(!v.futureJob)missing.push('미래 직업 1개');$('ready').textContent=missing.length?'프롬프트 완성 전 채울 것: '+missing.join(', '):'🎉 직업 6개가 모두 연결됐어요. 기본 프롬프트를 복사하세요!';state.done=state.done.filter(n=>n>=1&&n<=10&&!missingAnswer(n));renderBonus(v);document.querySelectorAll('.section').forEach((s,i)=>{const n=i+1;s.classList.toggle('done',state.done.includes(n));s.classList.toggle('locked',Array.from({length:i},(_,j)=>j+1).some(prior=>!state.done.includes(prior)||!!missingAnswer(prior)));});document.querySelectorAll('.nav a').forEach(a=>{const target=Number(a.getAttribute('href').slice(2));a.classList.toggle('completed',state.done.includes(target));a.setAttribute('aria-disabled',String(Array.from({length:target-1},(_,i)=>i+1).some(n=>!state.done.includes(n)||!!missingAnswer(n))));});$('progressbar').style.width=`${state.done.length/10*100}%`;$('progressText').textContent=`${state.done.length} / 10 완료`;const finished=state.done.includes(10);$('finalStatus').hidden=!finished;const finalButton=document.querySelector('[data-complete="10"]');finalButton.disabled=finished;finalButton.textContent=finished?'FINAL 완료됨':'FINAL 완료';save();}
+function update(){const v=vals();state.fields=v;state.manual=$('manualType').value.toUpperCase();const t=type();$('typeResult').textContent=t||'????';$('typeHelp').textContent=t?'오늘의 탐색 힌트예요. 어떤 직업이든 자유롭게 선택하세요.':'8개 질문에 모두 답하면 결과가 나타나요.';renderJobExplorer();renderThemes();renderUpgrades();renderFutureJobs();const j=six(v);if(v.curiousJob&&!j.includes(v.curiousJob)){v.curiousJob='';$('curiousJob').value='';state.fields.curiousJob='';}renderCuriousJobs(j,v.curiousJob);$('jobCount').textContent=state.selected.length;$('selectedJobs').innerHTML=state.selected.length?state.selected.map((x,i)=>`<button type="button" class="chip selectedChip" data-remove="${i}" aria-label="${esc(x)} 선택 취소">${i+1}. ${esc(x)} <span aria-hidden="true">×</span></button>`).join(''):'<span class="muted">카드를 눌러 3개를 골라요.</span>';$('selectedJobs').querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{state.selected.splice(Number(b.dataset.remove),1);update();});$('careerSix').innerHTML=j.length?j.map((x,i)=>`<span class="chip">${i+1}. ${esc(x)}</span>`).join(''):'<span class="muted">6개 직업을 채우면 여기에 모여요.</span>';renderBoard(v);renderGameSettings(v);$('basePrompt').value=basePrompt(v);$('v1FixPrompt').value=`기존 게임의 제목·직업·디자인은 유지하고 다음 문제를 고쳐 줘.\n문제: ${v.v1bug||'(테스트 후 입력)'}\n좋았던 점은 유지: ${v.v1fun||'(입력 예정)'}\n학생이 정한 최종 승리 조건: ${v.goal}\n선택한 특별 칸: ${v.special}\n학생이 만든 규칙: ${v.ownRule}\nVERSION 1에서 24번째 칸 도착 종료는 말 이동 테스트용 임시 조건이야. 최종 승리 조건과 특별 칸, 학생 규칙은 최종 게임 단계에서 구현할 설정으로 유지해줘. 수정 뒤 게임판, 주사위, 이동, 임시 종료, 다시 시작을 다시 확인하고 전체 HTML을 보여 줘.`;$('situationPrompt').value=situationPrompt(v);const situationCount=[v.sit1,v.sit2,v.sit3,v.sit4].filter(Boolean).length;$('situationGate').textContent=situationCount===4?'✓ 직업 상황 4개를 모두 작성했어요.':`직업 상황 ${situationCount}/4 작성 · 4개를 모두 작성해야 다음 단계로 갈 수 있어요.`;$('situationGate').classList.toggle('ready',situationCount===4);$('questionCount').textContent=`선택한 질문 ${state.pickedQuestions.length} / 4`;$('contentPrompt').value=contentPrompt(v);$('finalPrompt').value=finalPrompt(v);$('reportPrompt').value=reportPrompt(v);$('finalFixPrompt').value=`현재 완성판의 직업과 진로 콘텐츠는 유지하고 다음 오류를 수정해 줘: ${v.finalBug||'(테스트 후 입력)'}. 최종 승리 조건: ${v.goal}. 특별 칸: ${v.special}. 학생이 만든 규칙: ${v.ownRule}. 이 세 설정이 실제로 작동하도록 유지하고, 1명/2명 턴, 상황·질문 카드, 결과 요약도 함께 점검하고 전체 HTML을 보여 줘.`;$('upgradePrompt').value=`현재 게임의 모든 기능을 유지하면서 '${state.upgrade}' 기능을 추가해 줘. 원하는 모습: ${v.upgradeDetail||'학생이 바로 이해할 수 있게 재미있고 간단하게 구현'}. 기존 디자인과 어울리게 만들고 전체 HTML을 보여 줘.`;renderCareerReport(v);const missing=[];if(state.selected.length<3)missing.push(`탐색 직업 ${3-state.selected.length}개`);if(!v.ownJob1||!v.ownJob2)missing.push('관심 직업 2개');if(!v.futureJob)missing.push('미래 직업 1개');$('ready').textContent=missing.length?'프롬프트 완성 전 채울 것: '+missing.join(', '):'🎉 직업 6개가 모두 연결됐어요. 기본 프롬프트를 복사하세요!';state.done=state.done.filter(n=>n>=1&&n<=10&&!missingAnswer(n));renderBonus(v);document.querySelectorAll('.section').forEach((s,i)=>{const n=i+1;s.classList.toggle('done',state.done.includes(n));s.classList.toggle('locked',Array.from({length:i},(_,j)=>j+1).some(prior=>!state.done.includes(prior)||!!missingAnswer(prior)));});document.querySelectorAll('.nav a').forEach(a=>{const target=Number(a.getAttribute('href').slice(2));a.classList.toggle('completed',state.done.includes(target));a.setAttribute('aria-disabled',String(Array.from({length:target-1},(_,i)=>i+1).some(n=>!state.done.includes(n)||!!missingAnswer(n))));});$('progressbar').style.width=`${state.done.length/10*100}%`;$('progressText').textContent=`${state.done.length} / 10 완료`;const finished=state.done.includes(10);$('finalStatus').hidden=!finished;const finalButton=document.querySelector('[data-complete="10"]');finalButton.disabled=finished;finalButton.textContent=finished?'FINAL 완료됨':'FINAL 완료';save();}
 function parseCareerReport(raw){
  const text=raw.trim();if(!text.includes('나의 진로 탐색 보고서'))return null;
  const labels={score:'진로 경험 점수',jobs:'게임에서 만난 직업',skills:'획득한 역량 카드',topSkill:'가장 많이 획득한 역량',title:'오늘의 탐험 칭호',curiousJob:'관심 직업',jobTask:'관심 직업 하는 일',reason:'관심이 생긴 이유',next:'더 알아보고 싶은 것'};
