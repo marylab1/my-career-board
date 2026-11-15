@@ -196,9 +196,8 @@ function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');
 function openGeminiInBrowserTab(){
  const webUrl='https://gemini.google.com/app';
  if(/Android/i.test(navigator.userAgent)){
-  const fallback=encodeURIComponent(webUrl);
-  const chromeIntent=`intent://gemini.google.com/app#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${fallback};end`;
-  const tab=window.open(chromeIntent,'_blank');
+  const chromeUrl=`googlechrome://navigate?url=${encodeURIComponent(webUrl)}`;
+  const tab=window.open(chromeUrl,'_blank');
   if(!tab)toast('새 탭 열기가 차단됐어요. 브라우저에서 팝업을 허용한 뒤 다시 눌러 주세요.');
   return;
  }
